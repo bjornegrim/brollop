@@ -197,36 +197,13 @@
 
     <script>
 function checkPassword() {
-    const password = document.getElementById('password').value.trim();
-    const error = document.getElementById('error');
-    const iframe = document.getElementById('app');
-    
+    const password = document.getElementById('password').value;
     if (!password) {
-        error.style.display = 'block';
-        error.textContent = 'Vänligen ange ett lösenord';
+        document.getElementById('error').style.display = 'block';
         return;
     }
-
-    // Lägg till event listener för att hantera iframe laddning
-    iframe.onload = function() {
-        // Om iframe innehåller "Åtkomst nekad" så var lösenordet fel
-        try {
-            if (iframe.contentDocument.body.textContent.includes('Åtkomst nekad')) {
-                document.getElementById('loginContainer').style.display = 'flex';
-                iframe.style.display = 'none';
-                error.style.display = 'block';
-                error.textContent = 'Felaktigt lösenord';
-            }
-        } catch(e) {
-            // Om vi inte kan läsa iframe content är lösenordet rätt 
-            // och vi har blivit omdirigerade till appen
-            document.getElementById('loginContainer').style.display = 'none';
-            iframe.style.display = 'block';
-        }
-    };
-
-    // Prova lösenordet
     document.getElementById('loginContainer').style.display = 'none';
+    const iframe = document.getElementById('app');
     iframe.style.display = 'block';
     iframe.src = 'https://script.google.com/macros/s/AKfycbwTEPjUTUU0aOiC2_mUPMpxJxyCv4IqMDyy9Kl0odFJd6zFmXSbPr1-H6E2u6OFFCjw/exec?pwd=' + encodeURIComponent(password);
 }
