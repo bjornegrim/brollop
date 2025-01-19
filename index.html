@@ -87,27 +87,15 @@
     </div>
     <iframe id="app" style="display:none;"></iframe>
 
-    <script>
-        function checkPassword() {
-            const password = document.getElementById('password').value;
-            const correctPassword = 'dittValdaLösenord'; // Sätt samma lösenord som i Google Apps Script
-
-            if (password === correctPassword) {
-                document.getElementById('loginContainer').style.display = 'none';
-                const iframe = document.getElementById('app');
-                iframe.style.display = 'block';
-                iframe.src = 'https://script.google.com/macros/s/AKfycbx8oOp63Xsi6aBMLmOS2UreCdD06nDBkLTxXeA2L8xVtrJpH5RbTIy1U6YNouDisqoQ/exec?pwd=' + password;
-            } else {
-                document.getElementById('error').style.display = 'block';
-            }
-        }
-
-        // Aktivera Enter-tangenten för inloggning
-        document.getElementById('password').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
-        });
-    </script>
+// I GitHub index.html
+<script>
+    function checkPassword() {
+        const password = document.getElementById('password').value;
+        document.getElementById('loginContainer').style.display = 'none';
+        const iframe = document.getElementById('app');
+        iframe.style.display = 'block';
+        iframe.src = 'https://script.google.com/macros/s/AKfycbx8oOp63Xsi6aBMLmOS2UreCdD06nDBkLTxXeA2L8xVtrJpH5RbTIy1U6YNouDisqoQ/exec?pwd=' + encodeURIComponent(password);
+    }
+</script>
 </body>
 </html>
