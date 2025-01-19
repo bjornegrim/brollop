@@ -80,7 +80,7 @@
     <div class="login-container" id="loginContainer">
         <div class="login-box">
             <h2>Välkommen till vår bröllopsplanering</h2>
-            <input type="password" id="password" placeholder="Ange lösenord" 
+            <input type="password" id="password" placeholder="Ange lösenord" autofocus
                 onkeypress="if(event.key === 'Enter') { event.preventDefault(); checkPassword(); }">
             <button onclick="checkPassword()">Öppna planeraren</button>
             <div class="error" id="error">Felaktigt lösenord</div>
