@@ -4,14 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Artur & Rebeckas Bröllop</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E75480'><path d='M12 2l3.5 3.5-3.5 7-3.5-7L12 2zm0 1.7L9.7 5.9l2.3 4.6 2.3-4.6L12 3.7zm7 5.3l-7 12-7-12h14zm-12.8 1l5.8 10 5.8-10H6.2z'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #F8B4C4;
+            --secondary-color: #FDF2F4;
+            --accent-color: #E75480;
+            --text-color: #4A4A4A;
+            --border-color: #FFE4E1;
+        }
+
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            background: #FDF2F4;
-            font-family: 'Arial', sans-serif;
+            background: var(--secondary-color);
+            font-family: 'Playfair Display', serif;
+            overflow: hidden;
         }
 
         .login-container {
@@ -21,9 +31,33 @@
             width: 100%;
             height: 100%;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(248, 180, 196, 0.97), rgba(231, 84, 128, 0.97));
+            flex-direction: column;
+            background: linear-gradient(135deg, 
+                rgba(248, 180, 196, 0.97),
+                rgba(231, 84, 128, 0.97));
+        }
+
+        .header {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            opacity: 0.9;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .login-box {
@@ -34,35 +68,58 @@
             text-align: center;
             max-width: 90%;
             width: 300px;
+            margin: 2rem auto;
+        }
+
+        .login-box h2 {
+            color: var(--accent-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin: 0 0 1.5rem 0;
+            font-weight: 500;
         }
 
         input {
             width: 100%;
             padding: 0.75rem;
             margin: 1rem 0;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
             box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(231, 84, 128, 0.1);
         }
 
         button {
-            background: #E75480;
+            background: var(--accent-color);
             color: white;
             border: none;
             padding: 0.75rem 1.5rem;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
+            font-family: inherit;
             font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
         }
 
         button:hover {
             background: #d54470;
+            transform: translateY(-1px);
         }
 
         .error {
-            color: #E75480;
+            color: var(--accent-color);
             margin-top: 1rem;
             display: none;
+            font-size: 0.9rem;
         }
 
         iframe {
@@ -74,10 +131,47 @@
             top: 0;
             left: 0;
         }
+
+        /* Dekorativa element */
+        .decorative-element {
+            position: absolute;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .heart {
+            width: 20px;
+            height: 20px;
+            background: white;
+            position: absolute;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Placera ut några hjärtan */
+        .heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { top: 20%; right: 10%; animation-delay: 1s; }
+        .heart:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 2s; }
+        .heart:nth-child(4) { bottom: 20%; right: 15%; animation-delay: 3s; }
     </style>
 </head>
 <body>
-    <div class="login-container" id="loginContainer">
+    <div class="login-container">
+        <!-- Dekorativa hjärtan -->
+        <div class="decorative-element heart"></div>
+        <div class="decorative-element heart"></div>
+        <div class="decorative-element heart"></div>
+        <div class="decorative-element heart"></div>
+
+        <div class="header">
+            <h1>Artur & Rebeckas Bröllop</h1>
+            <p>22 augusti 2026</p>
+        </div>
+
         <div class="login-box">
             <h2>Välkommen till vår bröllopsplanering</h2>
             <input type="password" id="password" placeholder="Ange lösenord" autofocus
@@ -86,24 +180,16 @@
             <div class="error" id="error">Felaktigt lösenord</div>
         </div>
     </div>
-    <iframe id="app" style="display:none;"></iframe>
+    <iframe id="app"></iframe>
 
-<script>
-function checkPassword() {
-    const password = document.getElementById('password').value.trim();
-    const error = document.getElementById('error');
-    
-    if (!password) {
-        error.style.display = 'block';
-        error.textContent = 'Vänligen ange ett lösenord';
-        return;
-    }
-    
-    document.getElementById('loginContainer').style.display = 'none';
-    const iframe = document.getElementById('app');
-    iframe.style.display = 'block';
-    iframe.src = 'https://script.google.com/macros/s/AKfycbx0XxNnamLwMWsWaIl3ipfbekggVaRZsFfqY_gGeTqddLnPASv11TrUK02XHHIW8aB-/exec?pwd=' + encodeURIComponent(password);
-}
-</script>
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            document.getElementById('loginContainer').style.display = 'none';
+            const iframe = document.getElementById('app');
+            iframe.style.display = 'block';
+            iframe.src = 'https://script.google.com/macros/s/AKfycbx0XxNnamLwMWsWaIl3ipfbekggVaRZsFfqY_gGeTqddLnPASv11TrUK02XHHIW8aB-/exec?pwd=' + encodeURIComponent(password);
+        }
+    </script>
 </body>
 </html>
