@@ -100,7 +100,7 @@ function checkPassword() {
     }
     
     // Gör ett test-anrop till din script URL för att kontrollera lösenordet
-    fetch('https://script.google.com/macros/s/[DITT-SCRIPT-ID]/exec?pwd=' + encodeURIComponent(password))
+    fetch('https://script.google.com/macros/s/AKfycbwEWkbnxGARwX1VrIxZ02Ol-Mr5Rq0Z3bsYFWWHk2L0FtZVHmORZGCB2ob6wgggKaOp/exec?pwd=' + encodeURIComponent(password))
         .then(response => {
             if (response.ok) {
                 // Om lösenordet är korrekt, visa appen
