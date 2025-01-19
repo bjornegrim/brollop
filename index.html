@@ -90,16 +90,34 @@
 
 <script>
 function checkPassword() {
-    const password = document.getElementById('password').value;
-    if (!password) {  
-        document.getElementById('error').style.display = 'block';
+    const password = document.getElementById('password').value.trim(); // Använd trim för att ta bort mellanslag
+    const error = document.getElementById('error');
+    
+    if (!password) {
+        error.style.display = 'block';
+        error.textContent = 'Vänligen ange ett lösenord';
         return;
     }
     
-    document.getElementById('loginContainer').style.display = 'none';
-    const iframe = document.getElementById('app');
-    iframe.style.display = 'block';
-    iframe.src = 'https://script.google.com/macros/s/AKfycbwEWkbnxGARwX1VrIxZ02Ol-Mr5Rq0Z3bsYFWWHk2L0FtZVHmORZGCB2ob6wgggKaOp/exec?pwd=' + encodeURIComponent(password);
+    // Gör ett test-anrop till din script URL för att kontrollera lösenordet
+    fetch('https://script.google.com/macros/s/[DITT-SCRIPT-ID]/exec?pwd=' + encodeURIComponent(password))
+        .then(response => {
+            if (response.ok) {
+                // Om lösenordet är korrekt, visa appen
+                document.getElementById('loginContainer').style.display = 'none';
+                const iframe = document.getElementById('app');
+                iframe.style.display = 'block';
+                iframe.src = 'https://script.google.com/macros/s/AKfycbwEWkbnxGARwX1VrIxZ02Ol-Mr5Rq0Z3bsYFWWHk2L0FtZVHmORZGCB2ob6wgggKaOp/exec?pwd=' + encodeURIComponent(password);
+            } else {
+                // Om lösenordet är fel, visa felmeddelande
+                error.style.display = 'block';
+                error.textContent = 'Felaktigt lösenord';
+            }
+        })
+        .catch(() => {
+            error.style.display = 'block';
+            error.textContent = 'Felaktigt lösenord';
+        });
 }
 </script>
 </body>
