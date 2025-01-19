@@ -98,24 +98,11 @@ function checkPassword() {
         error.textContent = 'Vänligen ange ett lösenord';
         return;
     }
-
-    // Vid rätt lösenord laddar vi direkt iframe
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbz2kZcFMBGlI8J-bdeWx4Xw3afIvXEQaHIXDtK6RvJyxa7vDC_llqu96tjOWoUl5L33/exec';
+    
     document.getElementById('loginContainer').style.display = 'none';
     const iframe = document.getElementById('app');
     iframe.style.display = 'block';
-    iframe.src = scriptUrl + '?pwd=' + encodeURIComponent(password);
-
-    // Lyssna på om iframe laddas korrekt
-    iframe.onload = function() {
-        // Om iframe URL har ändrats till GitHub-sidan betyder det att lösenordet var fel
-        if (iframe.contentWindow.location.href.includes('github.io')) {
-            iframe.style.display = 'none';
-            document.getElementById('loginContainer').style.display = 'flex';
-            error.style.display = 'block';
-            error.textContent = 'Felaktigt lösenord';
-        }
-    };
+    iframe.src = 'https://script.google.com/macros/s/AKfycbx0XxNnamLwMWsWaIl3ipfbekggVaRZsFfqY_gGeTqddLnPASv11TrUK02XHHIW8aB-/exec?pwd=' + encodeURIComponent(password);
 }
 </script>
 </body>
