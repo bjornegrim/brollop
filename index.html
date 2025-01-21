@@ -243,6 +243,89 @@
         .heart:nth-child(8) { top: 25%; right: 35%; width: 26px; height: 26px; animation-delay: 0.5s; }
         .heart:nth-child(9) { bottom: 15%; left: 40%; width: 32px; height: 32px; animation-delay: 2.8s; }
         .heart:nth-child(10) { top: 35%; right: 40%; width: 23px; height: 23px; animation-delay: 1.8s; }
+
+        /* Mobilanpassningar */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+                margin-bottom: 0.3rem;
+            }
+        
+            .header p {
+                font-size: 1.6rem;
+            }
+        
+            .login-box {
+                padding: 1.5rem;
+                margin: 1rem auto;
+            }
+        
+            .login-box h2 {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            }
+        
+            input {
+                padding: 0.6rem;
+                font-size: 1rem;
+            }
+        
+            button {
+                padding: 0.6rem 1.2rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* iPhone och mindre enheter */
+        @media (max-width: 390px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        
+            .header p {
+                font-size: 1.3rem;
+            }
+        
+            .login-box {
+                padding: 1.2rem;
+                width: 85%;
+            }
+        
+            .login-box h2 {
+                font-size: 1.2rem;
+            }
+        
+            .heart {
+                transform: scale(0.8);
+            }
+        
+            .heart:nth-child(1) { width: 25px; height: 25px; }
+            .heart:nth-child(2) { width: 20px; height: 20px; }
+            .heart:nth-child(3) { width: 18px; height: 18px; }
+            .heart:nth-child(4) { width: 28px; height: 28px; }
+            .heart:nth-child(5) { width: 20px; height: 20px; }
+            .heart:nth-child(6) { width: 22px; height: 22px; }
+            .heart:nth-child(7) { width: 19px; height: 19px; }
+            .heart:nth-child(8) { width: 21px; height: 21px; }
+            .heart:nth-child(9) { width: 26px; height: 26px; }
+            .heart:nth-child(10) { width: 18px; height: 18px; }
+        }
+        
+        /* iPhone Pro Max och liknande */
+        @media (min-width: 391px) and (max-width: 428px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+        
+            .header p {
+                font-size: 1.4rem;
+            }
+        
+            .login-box {
+                padding: 1.3rem;
+                width: 88%;
+            }
+        }        
     </style>
 </head>
 <body>
